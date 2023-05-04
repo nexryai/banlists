@@ -16,7 +16,7 @@ def block_bulletproof() -> list:
         if response.status_code == 200:
             for line in response.text.splitlines():
                 if not "#" in line:
-                    print(f"👎 Block bulletproof hosting (AS{asn}) IPs: {line}")
+                    print(f"👎 Block bulletproof🤣 hosting (AS{asn}) IPs: {line}")
                     __ip_list.append(line)
 
     # IPv6
