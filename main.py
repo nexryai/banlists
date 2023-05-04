@@ -1,8 +1,35 @@
 import re
 import requests
 
+
 my_ip = "0.0.0.0"
 ipv4_pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"
+
+def block_bulletproof() -> list:
+    __ip_list = []
+    block_asn = ["397702", "398088", "53667", "8473", "17318", "7941", "211298", "209366", "37963", "40065", "57523", "34665", "57509", "397702", "398088", "53667"]
+
+    # IPv4
+    for asn in block_asn:
+        response = requests.get(f"https://raw.githubusercontent.com/ipverse/asn-ip/master/as/{asn}/ipv4-aggregated.txt")
+
+        if response.status_code == 200:
+            for line in response.text.splitlines():
+                if not "#" in line:
+                    print(f"👎 Block bulletproof hosting (AS{asn}) IPs: {line}")
+                    __ip_list.append(line)
+
+    # IPv6
+    for asn in block_asn:
+        response = requests.get(f"https://raw.githubusercontent.com/ipverse/asn-ip/master/as/{asn}/ipv6-aggregated.txt")
+
+        if response.status_code == 200:
+            for line in response.text.splitlines():
+                if not "#" in line:
+                    print(f"👎 Block bulletproof🤣 hosting (AS{asn}) IPs: {line}")
+                    __ip_list.append(line)
+
+    return __ip_list
 
 
 def block_tor() -> list:
@@ -48,10 +75,11 @@ def block_public_proxy() -> list:
 
     return ip_list
 
-# 重複を削除
 __block_ips = block_tor()
-__block_ips += block_public_proxy()
+__block_ips += block_bulletproof()
+#__block_ips += block_public_proxy()
 
+# 重複排除
 block_ips = list(set(__block_ips))
 
 print("✨ Done!!")
