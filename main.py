@@ -2,7 +2,7 @@ import re
 import requests
 
 # JSONファイルをダウンロードする
-my_ip="39.110.162.11"
+#my_ip="0.0.0.0"
 json_url = "https://raw.githubusercontent.com/MatrixTM/MHDDoS/main/config.json"
 response = requests.get(json_url)
 data = response.json()
