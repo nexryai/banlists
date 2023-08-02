@@ -25,7 +25,7 @@ def block_bulletproof() -> list:
 
         if response.status_code == 200:
             for line in response.text.splitlines():
-                if not "#" in line:
+                if not "#" in line and line != "":
                     print(f"👎 Block bulletproof🤣 hosting (AS{asn}) IPs: {line}")
                     __ip_list.append(line)
 
@@ -77,7 +77,7 @@ def block_public_proxy() -> list:
 
 __block_ips = block_tor()
 __block_ips += block_bulletproof()
-#__block_ips += block_public_proxy()
+__block_ips += block_public_proxy()
 
 # 重複排除
 block_ips = list(set(__block_ips))
