@@ -34,5 +34,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           projectName: lance-network
+          branch: main
           directory: ./public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
