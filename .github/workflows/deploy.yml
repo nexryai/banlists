@@ -25,7 +25,7 @@ jobs:
           hugo --minify
           sudo apt-get -y install python3
           python3 main.py
-          mkdir public/data/nginx
+          mkdir -p public/data/nginx
           mv block-public-proxy.conf public/data/nginx/
           mv block-bulletproof.conf public/data/nginx/
 
