@@ -1,0 +1,27 @@
+baseURL = 'https://guard.sda1.net/'
+languageCode = 'ja-JP'
+title = 'Lance Network'
+theme = "hugo-book"
+
+[languages]
+[languages.en]
+  languageName = 'English'
+  contentDir = 'content.en'
+  weight = 1
+
+[languages.ja]
+  languageName = '日本語'
+  contentDir = 'content.ja'
+  weight = 2
+  
+[menu]
+# [[menu.before]]
+[[menu.after]]
+  name = "Github"
+  url = "https://github.com/nexryai/banlists"
+  weight = 10
+
+[[menu.after]]
+  name = "Contact"
+  url = "https://social.sda1.net/@nexryai"
+  weight = 20  

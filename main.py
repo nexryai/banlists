@@ -5,6 +5,7 @@ import requests
 my_ip = "0.0.0.0"
 ipv4_pattern = r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b"
 
+
 def block_bulletproof() -> list:
     __ip_list = []
     block_asn = ["397702", "398088", "53667", "8473", "17318", "7941", "211298", "209366", "37963", "40065", "57523", "34665", "57509", "397702", "398088", "53667"]
@@ -42,12 +43,12 @@ def block_tor() -> list:
 
     return __ip_list
 
+
 def block_public_proxy() -> list:
     # JSONファイルをダウンロードする
     json_url = "https://raw.githubusercontent.com/MatrixTM/MHDDoS/main/config.json"
     response = requests.get(json_url)
     data = response.json()
-
 
     # IPアドレスのリストを作成する
     ip_list = []
@@ -75,18 +76,13 @@ def block_public_proxy() -> list:
 
     return ip_list
 
-__block_ips = block_tor()
-__block_ips += block_bulletproof()
-__block_ips += block_public_proxy()
 
-# 重複排除
-block_ips = list(set(__block_ips))
-
-print("✨ Done!!")
-print(f"Total 🤭 IPs: {len(block_ips)}")
-
-with open("nginx.conf", "w") as f:
-    for ip in block_ips:
+with open("block-public-proxy.conf", "w") as f:
+    for ip in list(set(block_public_proxy())):
         f.write(f"deny {ip};\n")
 
-    f.write("# Add other directives here as necessary\n")
+with open("block-bulletproof.conf", "w") as f:
+    for ip in list(set(block_bulletproof())):
+        f.write(f"deny {ip};\n")
+
+print("✨ Done!!")

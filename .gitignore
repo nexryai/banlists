@@ -1,1 +1,3 @@
-nginx.conf
+block-public-proxy.conf
+block-bulletproof.conf
+.hugo_build.lock
