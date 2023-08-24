@@ -77,20 +77,23 @@ def block_public_proxy() -> list:
     return ip_list
 
 
+public_proxy_ips = list(set(block_public_proxy()))
+bulletproof_ips = list(set(block_bulletproof()))
+
 with open("block-public-proxy.conf", "w") as f:
-    for ip in list(set(block_public_proxy())):
+    for ip in public_proxy_ips:
         f.write(f"deny {ip};\n")
 
 with open("block-bulletproof.conf", "w") as f:
-    for ip in list(set(block_bulletproof())):
+    for ip in bulletproof_ips:
         f.write(f"deny {ip};\n")
 
 with open("public-proxy.ipset", "w") as f:
-    for ip in list(set(block_public_proxy())):
+    for ip in public_proxy_ips:
         f.write(f"{ip}\n")
 
 with open("bulletproof.ipset", "w") as f:
-    for ip in list(set(block_bulletproof())):
+    for ip in bulletproof_ips:
         f.write(f"{ip}\n")
 
 print("✨ Done!!")
