@@ -11,5 +11,9 @@
  -  `https://guard.sda1.net/data/nginx/block-bulletproof.conf`
     * 防弾ホストのCIDRをブロックするnginx設定ファイル
 
-### jsonデータ
-現在準備中
+### ipset
+ - `https://guard.sda1.net/data/ipset/public-proxy.ipset`
+    * パブリックプロキシのipset
+
+ -  `https://guard.sda1.net/data/ipset/bulletproof.ipset`
+    * 防弾ホストのCIDRのipset

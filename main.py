@@ -85,4 +85,12 @@ with open("block-bulletproof.conf", "w") as f:
     for ip in list(set(block_bulletproof())):
         f.write(f"deny {ip};\n")
 
+with open("public-proxy.ipset", "w") as f:
+    for ip in list(set(block_public_proxy())):
+        f.write(f"{ip}\n")
+
+with open("bulletproof.ipset", "w") as f:
+    for ip in list(set(block_bulletproof())):
+        f.write(f"{ip}\n")
+
 print("✨ Done!!")
