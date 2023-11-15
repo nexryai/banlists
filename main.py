@@ -47,9 +47,9 @@ def block_tor() -> list:
 
 def block_public_proxy() -> list:
     ip_list = []
-    ip_list.extend(get_ipset("https://iplists.firehol.org/files/firehol_proxies.netset"))
-    ip_list.extend(get_ipset("https://iplists.firehol.org/files/sslproxies_1d.ipset"))
-    ip_list.extend(get_ipset("https://iplists.firehol.org/files/socks_proxy_1d.ipset"))
+    #ip_list.extend(get_ipset("https://iplists.firehol.org/files/firehol_proxies.netset"))
+    ip_list.extend(get_ipset("https://iplists.firehol.org/files/sslproxies_30d.ipset"))
+    ip_list.extend(get_ipset("https://iplists.firehol.org/files/socks_proxy_30d.ipset"))
 
     return ip_list
 
