@@ -14,7 +14,7 @@ def get_ipset(url):
             if not "#" in line:
                 __ip_list.append(line)
     else:
-        print("non-200 resp from server")
+        print(f"non-200 resp from server: {url}")
 
     return __ip_list
 
@@ -48,8 +48,8 @@ def block_tor() -> list:
 def block_public_proxy() -> list:
     ip_list = []
     ip_list.extend(get_ipset("https://iplists.firehol.org/files/firehol_proxies.netset"))
-    ip_list.extend(get_ipset("https://iplists.firehol.org/files/sslproxies_7d.ipset"))
-    ip_list.extend(get_ipset("https://iplists.firehol.org/files/socks_proxy_7d.ipset"))
+    ip_list.extend(get_ipset("https://iplists.firehol.org/files/sslproxies_1d.ipset"))
+    ip_list.extend(get_ipset("https://iplists.firehol.org/files/socks_proxy_1d.ipset"))
 
     return ip_list
 
