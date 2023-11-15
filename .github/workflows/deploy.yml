@@ -34,11 +34,13 @@ jobs:
           mkdir -p public/data/ipset
           mv block-public-proxy.conf public/data/nginx/
           mv block-bulletproof.conf public/data/nginx/
+          mv block-abuseip.conf public/data/nginx/
           mv public-proxy.ipset public/data/ipset/
           mv bulletproof.ipset public/data/ipset/
-          curl --compressed https://raw.githubusercontent.com/stamparm/ipsum/master/ipsum.txt 2>/dev/null | grep -v "#" | grep -v -E "\s[1-2]$" | cut -f 1 > public/data/ipset/abuse.ipset
-          curl https://raw.githubusercontent.com/LittleJake/ip-blacklist/main/ustc_blacklist_ip.txt >> public/data/ipset/abuse.ipset
-          curl https://raw.githubusercontent.com/LittleJake/ip-blacklist/main/abuseipdb_blacklist_ip_score_75.txt >> public/data/ipset/abuse.ipset
+          mv abuse.ipset public/data/ipset/
+          
+          curl --compressed https://raw.githubusercontent.com/stamparm/ipsum/master/ipsum.txt 2>/dev/null | grep -v "#" | grep -v -E "\s[1-2]$" | cut -f 1 >> public/data/ipset/abuse.ipset
+
 
       - uses: cloudflare/pages-action@1
         with:
